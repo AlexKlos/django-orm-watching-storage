@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.utils.timezone import localtime, now
+from django.utils.timezone import localtime
 
 from datacenter.models import Visit
-from datacenter.visit_model_utils import (get_duration, 
-                                          format_duration, 
-                                          is_visit_long)
+from datacenter.time_conversion import format_duration, format_time
+from datacenter.visit_utils import get_duration, is_visit_long
 
 
 def storage_information_view(request):
@@ -13,8 +12,8 @@ def storage_information_view(request):
 
     for current_visit in current_visits:
         visitor_name = current_visit.passcard.owner_name
-        entered_time = localtime(current_visit.entered_at).replace(microsecond=0)
-        str_entered_time = entered_time.strftime('%d %B %Y %H:%M')
+        entered_time = localtime(current_visit.entered_at)
+        str_entered_time = format_time(entered_time)
         duration = format_duration(get_duration(current_visit))
         non_closed_visits.append(
             {

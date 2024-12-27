@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 
 from datacenter.models import Passcard, Visit
-from datacenter.visit_model_utils import (get_duration, 
-                                          format_duration, 
-                                          is_visit_long)
+from datacenter.time_conversion import format_duration, format_time
+from datacenter.visit_utils import get_duration, is_visit_long
 
 
 def passcard_info_view(request, passcode):
@@ -12,7 +11,7 @@ def passcard_info_view(request, passcode):
 
     this_passcard_visits = []
     for visit in visits:
-        entered_at = visit.entered_at.strftime('%d %B %Y %H:%M')
+        entered_at = format_time(visit.entered_at)
         duration = format_duration(get_duration(visit))
         this_passcard_visits.append(
             {
