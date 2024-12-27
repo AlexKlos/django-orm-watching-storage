@@ -2,23 +2,9 @@ from django.shortcuts import render
 from django.utils.timezone import localtime, now
 
 from datacenter.models import Visit
-
-
-def get_duration(visit):
-    if visit.leaved_at == None:
-        duration = now().replace(microsecond=0) - visit.entered_at.replace(microsecond=0)
-    else:
-        duration = visit.leaved_at.replace(microsecond=0) - visit.entered_at.replace(microsecond=0)
-    return duration
-
-
-def format_duration(duration):
-    str_duration = str(duration)
-    return str_duration
-
-
-def is_visit_long(visit, minutes=60):
-    return get_duration(visit).total_seconds() > minutes * 60
+from datacenter.visit_model_utils import (get_duration, 
+                                          format_duration, 
+                                          is_visit_long)
 
 
 def storage_information_view(request):
