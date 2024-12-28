@@ -9,10 +9,5 @@ def get_duration(visit):
     return duration
 
 
-def format_duration(duration):
-    str_duration = str(duration).split('.')[0]
-    return str_duration
-
-
 def is_visit_long(visit, minutes=60):
     return get_duration(visit).total_seconds() > minutes * 60
