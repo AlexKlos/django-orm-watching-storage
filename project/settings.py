@@ -10,7 +10,7 @@ DATABASES = {
     'default': {
         'ENGINE': env('DB_ENGINE'),
         'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'PORT': env.int('DB_PORT'),
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
