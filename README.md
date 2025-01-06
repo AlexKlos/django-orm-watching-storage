@@ -26,14 +26,14 @@ pip install --upgrade -r requirements.txt
 Создайте файл `.env` в папке `project` и добавьте в него следующие переменные окружения:
 
 ```bash
-ENGINE= Движок_БД
-HOST= Адрес_БД
-PORT= Порт_БД
-NAME= Имя_БД
-USER= Имя_пользователя
-PASSWORD= Пароль 
-SECRET_KEY= Секретный_ключ
-DEBUG= Режим_запуска # True - для отладки / False - в рабочем режиме
+ENGINE=Движок_БД
+HOST=Адрес_БД
+PORT=Порт_БД
+NAME=Имя_БД
+USER=Имя_пользователя
+PASSWORD=Пароль 
+SECRET_KEY=Секретный_ключ
+DEBUG=Режим_запуска # True - для отладки / False - в рабочем режиме
 ```
 
 ## Цель проекта
